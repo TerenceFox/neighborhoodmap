@@ -13,10 +13,14 @@
 <body>
 <div class="container">
   <div class="header">
-    <input data-bind="click: toggleSidebar" type="checkbox" name="sidebar_toggle" id="sidebar_toggle">
-    <h1 data-bind="click: backToHome">Title</h1>
-    <button data-bind="click: filterVisited">Visited</button>
-    <button data-bind="click: filterFavorited">Favorited</button>
+    <div  data-bind="click: toggleSidebar" type="checkbox" id="sidebar_toggle">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <h1 class="title" data-bind="click: backToHome">Crown Heights Caribbean Explorer</h1>
+    <button class="visited_btn" data-bind="click: filterVisited">Visited</button>
+    <button class="favorited_btn" data-bind="click: filterFavorited">Favorited</button>
   </div>
   <div data-bind="visible: sidebarToggle" id="sidebar">
     <ul data-bind="foreach: restaurants">

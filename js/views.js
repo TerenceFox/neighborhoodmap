@@ -160,6 +160,9 @@ var ViewModel = function (restaurants) {
   // Toggle a div in the view to show more details about a restaurant and
   // change the associated marker to highlight it on the map.
   self.showDetails = function (restaurant) {
+    if (!self.sidebarToggle()) {
+      self.toggleSidebar();
+    };
     for (var i=0; i < self.restaurants().length; i++){
       if (self.restaurants()[i] !== restaurant) {
         self.restaurants()[i].details(false);
@@ -190,6 +193,7 @@ var ViewModel = function (restaurants) {
   // Set the restaurant associated with the button to favorited, save new state
   // to localStorage and change icon acccordingly.
   self.setToFavorited = function (restaurant) {
+    restaurant.visited(true);
     restaurant.favorited(true);
     updateStorage();
     setIconImage(restaurant);
@@ -255,9 +259,11 @@ var ViewModel = function (restaurants) {
   self.toggleSidebar = function () {
     if (self.sidebarToggle()) {
       self.sidebarToggle(false);
+      $("#sidebar_toggle").children().removeClass("change");
       $("#map").css("grid-column-start", "1");
     } else {
       self.sidebarToggle(true);
+      $("#sidebar_toggle").children().addClass("change");
       $("#map").css("grid-column-start", "4");
     };
   };
