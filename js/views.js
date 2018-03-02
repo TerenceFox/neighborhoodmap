@@ -250,5 +250,17 @@ var ViewModel = function (restaurants) {
     ids = setNeighborhood();
     resetNeighborhood(ids);
   };
+
+  self.sidebarToggle = ko.observable(false);
+  self.toggleSidebar = function () {
+    if (self.sidebarToggle()) {
+      self.sidebarToggle(false);
+      $("#map").css("grid-column-start", "1");
+    } else {
+      self.sidebarToggle(true);
+      $("#map").css("grid-column-start", "4");
+    };
+  };
+
 // End of View Model!
 };

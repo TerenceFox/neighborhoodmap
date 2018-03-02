@@ -13,12 +13,12 @@
 <body>
 <div class="container">
   <div class="header">
-    <input type="checkbox" name="sidebar_toggle" id="sidebar_toggle">
+    <input data-bind="click: toggleSidebar" type="checkbox" name="sidebar_toggle" id="sidebar_toggle">
     <h1 data-bind="click: backToHome">Title</h1>
     <button data-bind="click: filterVisited">Visited</button>
     <button data-bind="click: filterFavorited">Favorited</button>
   </div>
-  <div id="sidebar">
+  <div data-bind="visible: sidebarToggle" id="sidebar">
     <ul data-bind="foreach: restaurants">
       <li data-bind="visible: visible">
         <span data-bind="text: name, click: $parent.showDetails"></span>
