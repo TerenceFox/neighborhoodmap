@@ -206,11 +206,13 @@ var ViewModel = function (restaurants) {
   function visitedHighlightToggle () {
     if(self.visitedHighlight()) {
       self.visitedHighlight(false);
-      $(".visited_btn").css("color", "black");
+      $(".visited_btn").css("background-color", "#ffcc5c");
+      $(".visited_btn").css("color", "#e8702a");
       self.backToHome();
     } else {
       self.visitedHighlight(true);
-      $(".visited_btn").css("color", "white");
+      $(".visited_btn").css("background-color", "#e8702a");
+      $(".visited_btn").css("color", "#ffcc5c");
     }
   };
 
@@ -233,11 +235,13 @@ var ViewModel = function (restaurants) {
   function favoritedHighlightToggle () {
     if(self.favoritedHighlight()) {
       self.favoritedHighlight(false);
-      $(".favorited_btn").css("color", "black");
+      $(".favorited_btn").css("background-color", "#ffcc5c");
+      $(".favorited_btn").css("color", "#e8702a");
       self.backToHome();
     } else {
       self.favoritedHighlight(true);
-      $(".favorited_btn").css("color", "white");
+      $(".favorited_btn").css("background-color", "#e8702a");
+      $(".favorited_btn").css("color", "#ffcc5c");
     }
   };
   // Filter the list of restaurants according the to the favorited toggle.

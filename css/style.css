@@ -88,6 +88,8 @@ html, body {
   border: none;
   font: bolder;
   font-size: 1em;
+  background-color: #ffcc5c;
+  color: #e8702a;
 }
 
 .visited_btn:hover, .favorited_btn:hover {
@@ -95,11 +97,7 @@ html, body {
 }
 
 .visited_btn {
-  background-color: #ffcc5c;
-}
-
-.favorited_btn {
-  background-color: #e8702a;
+  margin-right: 3px;
 }
 
 /*Sidebar styling */
@@ -119,13 +117,16 @@ ul {
   padding: 0px;
   list-style-type: none;
 }
+
 .list_item:hover {
   cursor: pointer;
 }
+
 li {
   margin: 0px;
   padding: 3px;
 }
+
 li:hover {
   background-color: #faebd7;
 }
@@ -141,6 +142,30 @@ li.highlight > .list_item {
 .menu, .phone {
   font-variant: small-caps;
   font-size: .75em;
+}
+
+.list_btn {
+  border: none;
+  color: none;
+  outline: none;
+  background: none;
+}
+
+button > img {
+  height: 20px;
+  width: 20px;
+}
+
+button > img:hover {
+  height: 24px;
+  width: 24px;
+}
+
+.notes {
+  padding: 10px;
+  font-style: italic;
+  font-size: .75em;
+  color: #555;
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {

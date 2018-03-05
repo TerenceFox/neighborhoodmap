@@ -33,16 +33,16 @@
             <a class= "menu" data-bind="attr:{href: menu}" target="_blank">(menu)</a>
             <!-- /ko -->
             <br>
-            <button type="button" data-bind="click: $parent.setToVisited">
-              &#x2714;
+            <button class="list_btn" type="button" data-bind="click: $parent.setToVisited">
+              <img src="img/checkmarkicon.png"/>
             </button>
-            <button type="button" data-bind="click: $parent.setToFavorited">
-              F
+            <button class="list_btn" type="button" data-bind="click: $parent.setToFavorited">
+              <img src="img/favoriteicon.png"/>
             </button>
-            <button type="button" data-bind="click: $parent.toggleNoteForm">
-              N
+            <button class="list_btn" type="button" data-bind="click: $parent.toggleNoteForm">
+              <img src="img/notesicon.png"/>
             </button>
-            <div data-bind="ifnot: noteToggle">
+            <div class="notes" data-bind="ifnot: noteToggle">
               <span data-bind="text: notes"></span>
             </div>
             <div data-bind="visible: noteToggle">
