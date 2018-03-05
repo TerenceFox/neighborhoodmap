@@ -28,7 +28,7 @@
         <li data-bind="visible: visible, css: {highlight: details}">
           <span class="list_item" data-bind="text: name, click: $parent.showDetails,"></span>
           <div data-bind="visible: details">
-            <span class="phone" data-bind="text: phone"></span>
+            <a class="phone" data-bind="attr:{href: 'tel:1+'+phone}"><span data-bind="text: phone"></span></a>
             <!-- ko if: menu -->
             <a class= "menu" data-bind="attr:{href: menu}" target="_blank">(menu)</a>
             <!-- /ko -->
