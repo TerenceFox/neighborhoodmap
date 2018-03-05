@@ -1,3 +1,4 @@
+
 html, body {
   box-sizing: border-box;
   height: 100%;
@@ -6,6 +7,7 @@ html, body {
   font-family: sans-serif;
 }
 
+/* Map styling */
 #map {
   height: 100%;
   position: absolute;
@@ -16,6 +18,18 @@ html, body {
   z-index: 0;
 }
 
+.infowindow_title {
+  color: #e8702a;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+#pano {
+        width: 200px;
+        height: 200px;
+}
+
+/* Header styling */
 .header {
     position: relative;
     z-index: 100;
@@ -26,12 +40,14 @@ html, body {
     align-items: flex-start;
 }
 
+/*Hamburger button */
 #sidebar_toggle {
   align-self: center;
   padding: 10px;
   display: inline-block;
   cursor: pointer;
 }
+
 
 .bar1, .bar2, .bar3 {
     width: 35px;
@@ -41,29 +57,31 @@ html, body {
     transition: 0.4s;
 }
 
-/* Rotate first bar */
+/* Hamburger bar animations */
 .change.bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
     transform: rotate(-45deg) translate(-9px, 6px) ;
 }
 
-/* Fade out the second bar */
 .change.bar2 {
     opacity: 0;
 }
 
-/* Rotate last bar */
 .change.bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
     transform: rotate(45deg) translate(-8px, -8px) ;
 }
 
-.visited_btn {
-  background-color: #ffcc5c;
+.title {
+  padding: 5px;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
-.favorited_btn {
-  background-color: #e8702a;
+.title:hover {
+  cursor: pointer;
 }
+
 .visited_btn, .favorited_btn  {
   height: 100px;
   margin: 0px;
@@ -75,13 +93,16 @@ html, body {
 .visited_btn:hover, .favorited_btn:hover {
   cursor: pointer;
 }
-.title {
-  padding: 5px;
-}
-.title:hover {
-  cursor: pointer;
+
+.visited_btn {
+  background-color: #ffcc5c;
 }
 
+.favorited_btn {
+  background-color: #e8702a;
+}
+
+/*Sidebar styling */
 #sidebar {
   position: absolute;
   top: 100px;
@@ -105,14 +126,31 @@ li {
   margin: 0px;
   padding: 3px;
 }
-
-.infowindow_title {
-  color: #e8702a;
-  font-weight: bold;
-  font-size: 1.25em;
+li:hover {
+  background-color: #faebd7;
 }
 
-#pano {
-        width: 200px;
-        height: 200px;
-      }
+li.highlight {
+  background-color: #faebd7;
+}
+
+li.highlight > .list_item {
+  color: #e8702a;
+}
+
+.menu, .phone {
+  font-variant: small-caps;
+  font-size: .75em;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+  #sidebar {
+    width: 100%;
+    justify-content: center;
+  }
+  .title {
+    padding-bottom: 0px;
+    margin: 0px;
+  }
+}

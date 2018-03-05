@@ -47,12 +47,12 @@ var ViewModel = function (restaurants) {
       infowindow.marker = marker;
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
+        restaurant.details(false);
       });
       var streetViewService = new google.maps.StreetViewService();
       var radius = 50;
       function getStreetView(data, status) {
         if (status == google.maps.StreetViewStatus.OK) {
-          console.log("OK!")
           var nearStreetViewLocation = data.location.latLng;
           var heading = google.maps.geometry.spherical.computeHeading(
             nearStreetViewLocation, marker.position);
@@ -188,7 +188,6 @@ var ViewModel = function (restaurants) {
   // Set the restaurant associated with the button to visited, save new state
   // to localStorage and change icon acccordingly.
   self.setToVisited = function (restaurant) {
-    console.log(restaurant);
     restaurant.visited(true);
     updateStorage();
     setIconImage(restaurant);
@@ -203,6 +202,18 @@ var ViewModel = function (restaurants) {
     setIconImage(restaurant);
   }
 
+  self.visitedHighlight = ko.observable(false);
+  function visitedHighlightToggle () {
+    if(self.visitedHighlight()) {
+      self.visitedHighlight(false);
+      $(".visited_btn").css("color", "black");
+      self.backToHome();
+    } else {
+      self.visitedHighlight(true);
+      $(".visited_btn").css("color", "white");
+    }
+  };
+
   // Filter the list of restaurants according the to the visited toggle.
   self.filterVisited = function () {
     for (var i=0; i < self.restaurants().length; i++){
@@ -215,6 +226,19 @@ var ViewModel = function (restaurants) {
         };
       };
     };
+  visitedHighlightToggle();
+  };
+
+  self.favoritedHighlight = ko.observable(false);
+  function favoritedHighlightToggle () {
+    if(self.favoritedHighlight()) {
+      self.favoritedHighlight(false);
+      $(".favorited_btn").css("color", "black");
+      self.backToHome();
+    } else {
+      self.favoritedHighlight(true);
+      $(".favorited_btn").css("color", "white");
+    }
   };
   // Filter the list of restaurants according the to the favorited toggle.
   self.filterFavorited = function () {
@@ -228,6 +252,7 @@ var ViewModel = function (restaurants) {
         };
       };
     };
+    favoritedHighlightToggle();
   };
 
   self.toggleNoteForm = function (restaurant) {
@@ -255,7 +280,7 @@ var ViewModel = function (restaurants) {
   // Reset the list to display all the restaurants inside the neighborhood when
   // the title is clicked.
   self.backToHome = function () {
-    ids = setNeighborhood();
+    let ids = setNeighborhood();
     resetNeighborhood(ids);
   };
 

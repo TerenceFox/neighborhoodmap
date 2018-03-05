@@ -17,18 +17,20 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
       </div>
-      <h3 class="title" data-bind="click: backToHome">Crown Heights Caribbean Explorer</h3>
-      <button class="visited_btn" data-bind="click: filterVisited">Visited</button>
+      <h3 class="title">Crown Heights Caribbean Explorer</h3>
+      <button class="visited_btn" data-bind="click: filterVisited">
+        Visited
+      </button>
       <button class="favorited_btn" data-bind="click: filterFavorited">Favorited</button>
     </div>
     <div data-bind="visible: sidebarToggle" id="sidebar">
       <ul data-bind="foreach: restaurants">
-        <li data-bind="visible: visible">
-          <span class="list_item" data-bind="text: name, click: $parent.showDetails"></span>
+        <li data-bind="visible: visible, css: {highlight: details}">
+          <span class="list_item" data-bind="text: name, click: $parent.showDetails,"></span>
           <div data-bind="visible: details">
-            <span data-bind="text: phone"></span>
+            <span class="phone" data-bind="text: phone"></span>
             <!-- ko if: menu -->
-            <a data-bind="attr:{href: menu}">(menu)</a>
+            <a class= "menu" data-bind="attr:{href: menu}" target="_blank">(menu)</a>
             <!-- /ko -->
             <br>
             <button type="button" data-bind="click: $parent.setToVisited">
