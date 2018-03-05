@@ -43,6 +43,7 @@ function loadMap() {
   center = {lat: 40.672055, lng: -73.941921};
   map = new google.maps.Map(document.getElementById('map'), {
       center: center,
+      mapTypeControl: false,
       zoom: 15
     });
   //Create a mask outlining Crown Heights

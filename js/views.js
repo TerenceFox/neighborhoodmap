@@ -168,8 +168,12 @@ var ViewModel = function (restaurants) {
         self.restaurants()[i].details(false);
         self.restaurants()[i].noteToggle(false);
       } else if (self.restaurants()[i] === restaurant) {
-        restaurant.details(true)
-        };
+        if (restaurant.details()) {
+          restaurant.details(false);
+        } else {
+          restaurant.details(true);
+        }
+      };
       };
       var marker;
       for (var i=0; i < markers.length; i++) {

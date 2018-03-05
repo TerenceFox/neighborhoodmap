@@ -11,57 +11,54 @@
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <div  data-bind="click: toggleSidebar" type="checkbox" id="sidebar_toggle">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
+    <div class="header">
+      <div  data-bind="click: toggleSidebar" type="checkbox" id="sidebar_toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <h3 class="title" data-bind="click: backToHome">Crown Heights Caribbean Explorer</h3>
+      <button class="visited_btn" data-bind="click: filterVisited">Visited</button>
+      <button class="favorited_btn" data-bind="click: filterFavorited">Favorited</button>
     </div>
-    <h1 class="title" data-bind="click: backToHome">Crown Heights Caribbean Explorer</h1>
-    <button class="visited_btn" data-bind="click: filterVisited">Visited</button>
-    <button class="favorited_btn" data-bind="click: filterFavorited">Favorited</button>
-  </div>
-  <div data-bind="visible: sidebarToggle" id="sidebar">
-    <ul data-bind="foreach: restaurants">
-      <li data-bind="visible: visible">
-        <span data-bind="text: name, click: $parent.showDetails"></span>
-        <div data-bind="visible: details">
-          <span data-bind="text: phone"></span>
-          <!-- ko if: menu -->
-          <a data-bind="attr:{href: menu}">(menu)</a>
-          <!-- /ko -->
-          <br>
-          <button type="button" data-bind="click: $parent.setToVisited">
-            &#x2714;
-          </button>
-          <button type="button" data-bind="click: $parent.setToFavorited">
-            F
-          </button>
-          <button type="button" data-bind="click: $parent.toggleNoteForm">
-            N
-          </button>
-          <div data-bind="ifnot: noteToggle">
-            <span data-bind="text: notes"></span>
+    <div data-bind="visible: sidebarToggle" id="sidebar">
+      <ul data-bind="foreach: restaurants">
+        <li data-bind="visible: visible">
+          <span class="list_item" data-bind="text: name, click: $parent.showDetails"></span>
+          <div data-bind="visible: details">
+            <span data-bind="text: phone"></span>
+            <!-- ko if: menu -->
+            <a data-bind="attr:{href: menu}">(menu)</a>
+            <!-- /ko -->
+            <br>
+            <button type="button" data-bind="click: $parent.setToVisited">
+              &#x2714;
+            </button>
+            <button type="button" data-bind="click: $parent.setToFavorited">
+              F
+            </button>
+            <button type="button" data-bind="click: $parent.toggleNoteForm">
+              N
+            </button>
+            <div data-bind="ifnot: noteToggle">
+              <span data-bind="text: notes"></span>
+            </div>
+            <div data-bind="visible: noteToggle">
+              <textarea data-bind="value: $parent.noteToAdd, valueUpdate: 'afterkeydown', attr:{placeholder: $data.notes}">
+              </textarea>
+                <button type="button" data-bind="click: $parent.addNote">
+                  Submit
+                </button>
+                <button type="button" data-bind="click: $parent.cancelNote">
+                  Cancel
+                </button>
+              </form>
           </div>
-          <div data-bind="visible: noteToggle">
-            <textarea data-bind="value: $parent.noteToAdd, valueUpdate: 'afterkeydown', attr:{placeholder: $data.notes}">
-            </textarea>
-              <button type="button" data-bind="click: $parent.addNote">
-                Submit
-              </button>
-              <button type="button" data-bind="click: $parent.cancelNote">
-                Cancel
-              </button>
-            </form>
-        </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div id="map">
-    MAP
-  </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+<div id="map">
 </div>
 <script async defer
     src=
