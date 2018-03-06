@@ -168,6 +168,22 @@ button > img:hover {
   color: #555;
 }
 
+.notes_form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+textarea {
+  width: 100%;
+}
+.notes_form > button {
+  border: none;
+  display: inline-flex;
+  background-color: #e8702a;
+  color: #ffcc5c;
+  margin: 3px;
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
   #sidebar {

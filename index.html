@@ -45,7 +45,7 @@
             <div class="notes" data-bind="ifnot: noteToggle">
               <span data-bind="text: notes"></span>
             </div>
-            <div data-bind="visible: noteToggle">
+            <div class="notes_form" data-bind="visible: noteToggle">
               <textarea data-bind="value: $parent.noteToAdd, valueUpdate: 'afterkeydown', attr:{placeholder: $data.notes}">
               </textarea>
                 <button type="button" data-bind="click: $parent.addNote">
