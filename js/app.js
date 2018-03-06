@@ -1,10 +1,11 @@
 // Retreive restaurants matching the category ID and store as an object array.
+
 function grabRestaurants (data) {
+  var restaurants = [];
   if (data !== "error"){
     var categoryId = '4bf58dd8d48988d144941735';
-    var restaurants = [];
     var response = data.response.groups[0].items;
-    for (i = 0; i < response.length; i++) {
+    for (var i = 0; i < response.length; i++) {
       if (response[i].venue.categories[0].id === categoryId){
         var restaurant = {
           name: response[i].venue.name,
@@ -25,15 +26,15 @@ function grabRestaurants (data) {
           restaurant.menu = response[i].venue.menu.url;
         } else {
           restaurant.menu = null;
-        };
+        }
         restaurants.push(restaurant);
-      };
-    };
+      }
+    }
   } else {
-    var restaurants = "error";
-  };
+    restaurants.push("error");
+  }
   return restaurants;
-};
+}
 
 var center;
 var map;
@@ -66,23 +67,24 @@ function loadMap() {
   new google.maps.LatLng(40.678653, -73.952880),
   new google.maps.LatLng(40.681159, -73.964510),
   new google.maps.LatLng(40.663322, -73.960905)]]});
-};
+}
 
 var fsSuccess = function (data) {
+  var restaurants = [];
   //Check if data present in localStorage, otherwise fetch it from Foursquare.
   if (localStorage.getItem('restaurants')) {
-    var restaurants = Array.from(JSON.parse(localStorage.getItem('restaurants')));
+    restaurants = Array.from(JSON.parse(localStorage.getItem('restaurants')));
   } else {
-    var restaurants = grabRestaurants(data);
+    restaurants = grabRestaurants(data);
   }
   if (restaurants === "error"){
-    alert("Couldn't load restaurants.")
+    alert("Couldn't load restaurants.");
     loadMap();
     $("#sidebar").hide();
     $("#map").css("grid-column", "1 / -1");
   } else {
     ko.applyBindings(new ViewModel(restaurants));
-  };
+  }
 };
 
 // Callback for successful Google Maps API call
