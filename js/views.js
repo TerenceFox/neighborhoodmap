@@ -43,7 +43,7 @@ var ViewModel = function (restaurants) {
   var InfoWindow = new google.maps.InfoWindow();
 
 
-
+  // Load restaurant properties into infowindows for their corresponding makers
   function populateInfoWindow (marker, infowindow, restaurant) {
     if (infowindow.marker != marker) {
       infowindow.setContent('');
@@ -177,8 +177,10 @@ var ViewModel = function (restaurants) {
             restaurant.details(false);
           } else {
             restaurant.details(true);
+            let element = document.getElementById(restaurant.id);
+            element.scrollIntoView();
           }
-      }
+        }
     }
       var marker;
       for (var j=0; j < markers.length; j++) {
@@ -208,6 +210,8 @@ var ViewModel = function (restaurants) {
     setIconImage(restaurant);
   };
 
+  // Set the restaurant associated with the button to visited, save new state
+  // to localStorage and change icon acccordingly.
   self.visitedHighlight = ko.observable(false);
   function visitedHighlightToggle () {
     if(self.visitedHighlight()) {
@@ -237,6 +241,7 @@ var ViewModel = function (restaurants) {
   visitedHighlightToggle();
   };
 
+  // Filter the list of restaurants according the to the visited toggle.
   self.favoritedHighlight = ko.observable(false);
   function favoritedHighlightToggle () {
     if(self.favoritedHighlight()) {
@@ -250,6 +255,7 @@ var ViewModel = function (restaurants) {
       $(".favorited_btn").css("color", "#ffcc5c");
     }
   }
+
   // Filter the list of restaurants according the to the favorited toggle.
   self.filterFavorited = function () {
     for (var i=0; i < self.restaurants().length; i++){
@@ -265,6 +271,7 @@ var ViewModel = function (restaurants) {
     favoritedHighlightToggle();
   };
 
+  // Show the note input form field.
   self.toggleNoteForm = function (restaurant) {
     if (restaurant.noteToggle()) {
       restaurant.noteToggle(false);
@@ -273,8 +280,10 @@ var ViewModel = function (restaurants) {
     }
   };
 
+  // Store the input from the form edit field.
   self.noteToAdd = ko.observable("");
 
+  // Update the the restaurant
   self.addNote = function (restaurant) {
     restaurant.notes(self.noteToAdd());
     restaurant.noteToggle(false);
@@ -287,6 +296,7 @@ var ViewModel = function (restaurants) {
     self.noteToAdd("");
     updateStorage();
   };
+
   // Reset the list to display all the restaurants inside the neighborhood when
   // the title is clicked.
   self.backToHome = function () {

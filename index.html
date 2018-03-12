@@ -29,8 +29,8 @@
     <div data-bind="visible: sidebarToggle" id="sidebar">
       <input id="searchbox" data-bind="textInput: search" placeholder="Search..." type="text" />
       <ul data-bind="foreach: restaurants">
-        <li data-bind="visible: visible, css: {highlight: details}">
-          <span class="list_item" data-bind="text: name, click: $parent.showDetails,"></span>
+        <li data-bind="visible: visible, css: {highlight: details}, attr: {id: $data.id}">
+          <span class="list_item" data-bind="text: name, click: $parent.showDetails"></span>
           <div data-bind="visible: details">
             <a class="phone" data-bind="attr:{href: 'tel:1+'+phone}"><span data-bind="text: phone"></span></a>
             <!-- ko if: menu -->
