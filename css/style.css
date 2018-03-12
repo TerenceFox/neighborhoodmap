@@ -196,10 +196,21 @@ textarea {
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
   #sidebar {
+    position: absolute;
+    top: 50%;
+    bottom: 100px;
+    left: 0px;
     width: 100%;
-    justify-content: center;
+    overflow: scroll;
+    background-color: #87ceff;
+    display: flex;
+    flex-flow: column;
+    z-index: 100;
   }
-  .title {
+
+  .header {
+    position: absolute;
     padding-bottom: 0px;
+    bottom: 0px;
   }
 }

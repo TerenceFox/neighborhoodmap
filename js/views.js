@@ -93,6 +93,7 @@ var ViewModel = function (restaurants) {
         title: restaurants[i].name,
         position: restaurants[i].location,
         icon: image,
+        animation: google.maps.Animation.DROP,
         id: restaurants[i].id
       });
       markers.push(marker);
@@ -184,6 +185,7 @@ var ViewModel = function (restaurants) {
         if (markers[j].id === restaurant.id) {
           marker = markers[j];
           populateInfoWindow(marker, InfoWindow, restaurant);
+
         }
       }
     updateStorage();
