@@ -27,6 +27,7 @@
       <button class="favorited_btn" data-bind="click: filterFavorited">Favorited</button>
     </div>
     <div data-bind="visible: sidebarToggle" id="sidebar">
+      <input id="searchbox" data-bind="textInput: search" placeholder="Search..." type="text" />
       <ul data-bind="foreach: restaurants">
         <li data-bind="visible: visible, css: {highlight: details}">
           <span class="list_item" data-bind="text: name, click: $parent.showDetails,"></span>

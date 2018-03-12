@@ -107,12 +107,21 @@ html, body {
   left: 0px;
   background-color: #87ceff;
   width: auto;
-  display: inline-flex;
-  flex-flow: row;
+  display: flex;
+  flex-flow: column;
   z-index: 100;
 }
 
+#searchbox {
+  position: relative;
+  display: inline-flex;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 ul {
+  position: relative;
   margin: 0px;
   padding: 0px;
   list-style-type: none;

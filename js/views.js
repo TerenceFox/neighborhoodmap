@@ -305,5 +305,32 @@ var ViewModel = function (restaurants) {
     }
   };
 
+  self.search = ko.observable("");
+
+  self.search.subscribe(function(query) {
+    var filter = query.toUpperCase();
+    for (var i=0; i < self.restaurants().length; i++){
+      if (self.restaurants()[i].name.toUpperCase().indexOf(filter) < 0) {
+        self.restaurants()[i].visible(false);
+        for (var j=0; j < markers.length; j++){
+          if (self.restaurants()[i].id === markers[j].id){
+            markers[j].setMap(null);
+          }
+        }
+      } else {
+        self.restaurants()[i].visible(true);
+        for (var j=0; j < markers.length; j++){
+          if (self.restaurants()[i].id === markers[j].id){
+            ids.forEach(function(element){
+              if (markers[j].id === element) {
+                markers[j].setMap(map);
+              }
+            });
+          }
+        }
+      }
+    };
+  });
+
 // End of View Model!
 };
