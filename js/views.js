@@ -51,6 +51,7 @@ var ViewModel = function (restaurants) {
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
         restaurant.details(false);
+        marker.setAnimation(null);
       });
       var streetViewService = new google.maps.StreetViewService();
       var radius = 50;
@@ -161,6 +162,14 @@ var ViewModel = function (restaurants) {
     return image;
   }
 
+  function toggleBounce(marker) {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
+
   // Click Events
   // Toggle a div in the view to show more details about a restaurant and
   // change the associated marker to highlight it on the map.
@@ -187,7 +196,7 @@ var ViewModel = function (restaurants) {
         if (markers[j].id === restaurant.id) {
           marker = markers[j];
           populateInfoWindow(marker, InfoWindow, restaurant);
-
+          toggleBounce(marker);
         }
       }
     updateStorage();
