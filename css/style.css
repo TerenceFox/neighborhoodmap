@@ -12,7 +12,6 @@ html, body {
   height: 100%;
   position: absolute;
   top: 0;
-  bottom: -100px;
   left: 0;
   right: 0;
   z-index: 0;
@@ -208,8 +207,15 @@ textarea {
     z-index: 100;
   }
 
+  #map {
+    position: fixed;
+    height: calc(100% - 100px);
+    margin-bottom: 0px;
+  }
+
   .header {
     position: absolute;
+    margin-top: 0px;
     padding-bottom: 0px;
     bottom: 0px;
   }
